@@ -14,8 +14,5 @@ public class NumberReverter {
 
     }
 
-    public static void main(String[] args) {
-        new NumberReverter().revert(435);
-    }
 
 }

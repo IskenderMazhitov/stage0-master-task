@@ -1,7 +1,5 @@
 package com.epam.algorithms;
 
-import java.util.Arrays;
-
 /**
  * Here are the tasks for working with the arrays.
  * <p>
@@ -13,7 +11,7 @@ public class ArrayTasks {
      * Return a String[] array that will list all the seasons of the year, starting with winter.
      */
     public String[] seasonsArray() {
-        return new String[]{"Winter", "Spring", "Summer", "Autumn"};
+        return new String[]{"winter", "spring", "summer", "autumn"};
     };
 
     /**
@@ -42,7 +40,11 @@ public class ArrayTasks {
      * arr = [1, 3, 5]   -> sum = 9 arr = [5, -3, -4] -> sum = -2
      */
     public int totalSum(int[] arr) {
-        return Arrays.stream(arr).sum();
+        int sum = 0;
+        for (int i: arr){
+            sum += i;
+        }
+        return sum;
     }
 
 
@@ -93,7 +95,17 @@ public class ArrayTasks {
      * arr = [1,-2, 3]      -> [1, 3] arr = [-1, -2, -3]   -> [] arr = [1, 2]         -> [1, 2]
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
-        var res = Arrays.stream(arr).filter(i -> i>0).toArray();
+        var count = 0;
+        for (int i: arr){
+            if(i>0) count++;
+
+        }
+        var res = new int[count];
+        int ind = 0;
+        for(int i: arr){
+            if(i>0) res[ind++] = i;
+        }
+
         return res;
     }
 
@@ -107,12 +119,7 @@ public class ArrayTasks {
      * arr = [[3, 1, 2,], [3,2]] -> [[2, 3], [1, 2, 3]] arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        Arrays.sort(arr, (a, b) -> a.length - b.length);
-        return arr;
-    }
-    public static void main(String[] args) {
-        var ss = new ArrayTasks().sortRaggedArray(new int[][]{{3, 1, 2}, {3,2}, {1}});
-        for(int[] s: ss) System.out.println(Arrays.toString(s));
+        return null;
     }
 
 }
