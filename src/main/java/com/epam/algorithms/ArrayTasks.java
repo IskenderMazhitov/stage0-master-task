@@ -1,5 +1,7 @@
 package com.epam.algorithms;
 
+import java.util.Arrays;
+
 /**
  * Here are the tasks for working with the arrays.
  * <p>
@@ -11,8 +13,8 @@ public class ArrayTasks {
      * Return a String[] array that will list all the seasons of the year, starting with winter.
      */
     public String[] seasonsArray() {
-        return null;
-    }
+        return new String[]{"Winter", "Spring", "Summer", "Autumn"};
+    };
 
     /**
      * Generate an int[] array of consecutive positive integers starting at 1 of the given length (length parameter >
@@ -23,8 +25,14 @@ public class ArrayTasks {
      * length = 1  -> [1] length = 3  -> [1, 2, 3] length = 5  -> [1, 2, 3, 4, 5]
      */
     public int[] generateNumbers(int length) {
-        return null;
+        int[] arr = new int[length];
+        int ind = 0;
+        for(int i = 1; i <= length; i++){
+            arr[ind++] = i;
+        }
+        return arr;
     }
+
 
     /**
      * Find the sum of all elements of the int[] array.
@@ -34,8 +42,10 @@ public class ArrayTasks {
      * arr = [1, 3, 5]   -> sum = 9 arr = [5, -3, -4] -> sum = -2
      */
     public int totalSum(int[] arr) {
-        return 0;
+        return Arrays.stream(arr).sum();
     }
+
+
 
     /**
      * Return the index of the first occurrence of number in the arr array. If there is no such element in the array,
@@ -46,8 +56,16 @@ public class ArrayTasks {
      * arr = [99, -7, 102], number = -7    ->   2 arr = [5, -3, -4],   number = 10    ->  -1
      */
     public int findIndexOfNumber(int[] arr, int number) {
-        return 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == number){
+                return i;
+            }
+
+        }
+        return -1;
     }
+
 
     /**
      * Return the new String[] array obtained from the arr array by reversing the order of the elements.
@@ -58,7 +76,12 @@ public class ArrayTasks {
      * "pineapple"]
      */
     public String[] reverseArray(String[] arr) {
-        return null;
+        var res = new String[arr.length];
+        int j = 0;
+        for(int i = res.length - 1; i>=0; i--){
+            res[j++] = arr[i];
+        }
+        return res;
     }
 
     /**
@@ -70,7 +93,8 @@ public class ArrayTasks {
      * arr = [1,-2, 3]      -> [1, 3] arr = [-1, -2, -3]   -> [] arr = [1, 2]         -> [1, 2]
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
-        return null;
+        var res = Arrays.stream(arr).filter(i -> i>0).toArray();
+        return res;
     }
 
     /**
@@ -83,7 +107,12 @@ public class ArrayTasks {
      * arr = [[3, 1, 2,], [3,2]] -> [[2, 3], [1, 2, 3]] arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        return null;
+        Arrays.sort(arr, (a, b) -> a.length - b.length);
+        return arr;
+    }
+    public static void main(String[] args) {
+        var ss = new ArrayTasks().sortRaggedArray(new int[][]{{3, 1, 2}, {3,2}, {1}});
+        for(int[] s: ss) System.out.println(Arrays.toString(s));
     }
 
 }
